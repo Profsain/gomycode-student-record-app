@@ -36,13 +36,30 @@ function createObj() {
     const studentObj = new Student(fname, lname, email, phone, gender, dob, pob, address, country, state, city);
     return studentObj;
 }
+
+// store studentsData in local storage
+function storeData(studentObj) {
+    // check if local storage is empty
+    if (localStorage.getItem('studentsData') === null) {
+        // add data to local storage
+        localStorage.setItem('studentsData', JSON.stringify(studentDatabase));
+    } else {
+        // get data from local storage
+        const studentsData = JSON.parse(localStorage.getItem('studentsData'));
+        // add data to local storage
+        studentsData.push(studentObj);
+        localStorage.setItem('studentsData', JSON.stringify(studentsData));
+    }
+}
+
 // function to add object to array
 form.addEventListener('submit', function (event) {
     event.preventDefault();
     const newStudent = createObj()
     studentDatabase.push(newStudent);
+    // store data in local storage
+    storeData(newStudent);
     console.log(studentDatabase);
+    // function to clear form
     form.reset();
 });
-// function to clear form
-// function to display array
