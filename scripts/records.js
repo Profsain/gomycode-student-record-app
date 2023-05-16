@@ -9,7 +9,7 @@ function render() {
     for (const student of studentDatabase) {
         const card = document.createElement('div');
         card.classList.add('card', 'col-md-4');
-        card.style.width = '18rem';
+        card.style.width = '15rem';
         card.style.margin = '10px';
 
         const h5 = document.createElement('h5');
@@ -28,7 +28,7 @@ function render() {
         locationElem.textContent = `Location: ${student.city} ${student.state} ${student.country}`;
 
         const addressElem = document.createElement('p');
-        addressElem.textContent = `Address: ${student.add}`;
+        addressElem.textContent = `Address: ${student.address}`;
 
         // append elements to card
         card.appendChild(h5);
